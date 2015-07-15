@@ -24,7 +24,6 @@ private:
 	uint8_t volt_key;
 	uint8_t amps_left_key;
 	uint8_t amps_right_key;
-	
 };
 
 #endif
