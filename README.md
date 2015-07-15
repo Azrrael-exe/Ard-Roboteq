@@ -23,11 +23,11 @@ After that 2 options can be use to move the Motor controller:
 
 Send directly the values for each channel using this:
 
-`trac.move(int8_t A, int8_t B);`
+`trac.move(int8_t A, int8_t B, bool confirmation);`
 
 Or using `messages` with the IDs for each channel.
 
-`trac.move(message);`
+`trac.move(message, bool confirmation);`
 
 
 If you want to use the reads in `message` format, you need  to setup the ids for the measures from the controller use:
@@ -36,7 +36,7 @@ If you want to use the reads in `message` format, you need  to setup the ids for
 
 After that you can use the method `get_report`to get all the reads in `message` format with his respective IDs.
 
-`Message msg = trac.get_report();`
+`Message msg = trac.report();`
 
 To get each value separately use the methods:
 
