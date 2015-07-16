@@ -2,7 +2,7 @@
 #define roboteqMC_h
 
 #include <Arduino.h>
-#include "../ArduinoMSG/Message.h"
+#include "../Ard-MSG/Message.h"
 
 class AX2550
 {
