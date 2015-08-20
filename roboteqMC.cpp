@@ -1,9 +1,8 @@
 #include <Arduino.h>
 #include <roboteqMC.h>
 
-AX2550::AX2550(HardwareSerial serial_port):uart(serial_port)
+AX2550::AX2550(HardwareSerial& serial_port):uart(serial_port)
 {
-   uart = serial_port;
    uart.begin(9600,SERIAL_7E1);
 }
 

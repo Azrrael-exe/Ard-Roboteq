@@ -7,7 +7,7 @@
 class AX2550
 {
 public:
-	AX2550(HardwareSerial);
+	AX2550(HardwareSerial&);
 	void init(uint8_t,uint8_t);
 	void set_report(uint8_t,uint8_t,uint8_t);
 	bool move(int,int,bool);
@@ -16,7 +16,7 @@ public:
 	int amps(uint8_t);
 	Message report();
 private:
-	HardwareSerial uart;
+	HardwareSerial& uart;
 	bool chkResponse();
 	bool sendChk(char[]);
 	uint8_t x_key;
