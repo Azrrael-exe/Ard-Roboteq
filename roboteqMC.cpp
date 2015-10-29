@@ -112,26 +112,47 @@ float AX2550::volt()
    sprintf(command,"?e");
    if(sendChk(command))
    {
-      char inp[2];
-      
+      char inp[4];
+/*
+      while(uart.available()){
+         Serial.println(char(uart.read()));
+      }
+
+
       uart.read();
       uart.read();
       uart.read();
       uart.read();
-      
+
       inp[0] = '0';
       inp[1] = 'x';
       inp[2] = char(uart.read());
-      inp[3] = char(uart.read());
+      inp[3] = char(uart.read());      
 
       // Serial.println(inp[0]);
       // Serial.println(inp[1]);
       // Serial.println(inp[2]);
       // Serial.println(inp[3]);
 
-      float volt = 28.5 * strtoul(inp,0,16)/256;
+*/
+      uart.read();
 
-      // Serial.println(volt);
+      inp[0] = '0';
+      inp[1] = 'x';
+      inp[2] = char(uart.read());
+      inp[3] = char(uart.read());
+
+      uart.read();
+      uart.read();
+      uart.read();
+
+      uint16_t conv = strtoul(inp,0,16);
+
+      Serial.println(conv);
+
+      float volt = 55 * conv/256.0;
+
+      Serial.println(volt);
 
       delay(10);
 
