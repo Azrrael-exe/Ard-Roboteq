@@ -102,6 +102,7 @@ bool AX2550::chkResponse()
    }
 }
 
+
 float AX2550::volt()
 {
    while(uart.available())
@@ -112,7 +113,7 @@ float AX2550::volt()
    sprintf(command,"?e");
    if(sendChk(command))
    {
-      char inp[4];
+      char convert[4];
 /*
       while(uart.available()){
          Serial.println(char(uart.read()));
@@ -137,22 +138,32 @@ float AX2550::volt()
 */
       uart.read();
 
-      inp[0] = '0';
-      inp[1] = 'x';
-      inp[2] = char(uart.read());
-      inp[3] = char(uart.read());
+      convert[0] = '0';
+      convert[1] = 'x';
+      convert[2] = char(uart.read());
+      convert[3] = char(uart.read());
 
       uart.read();
       uart.read();
       uart.read();
 
-      uint16_t conv = strtoul(inp,0,16);
+/*
 
-      Serial.println(conv);
+      Serial.println("--- ---");
+      Serial.println(convert[0]);
+      Serial.println(convert[1]);
+      Serial.println(convert[2]);
+      Serial.println(convert[3]);
+      Serial.println("--- ---");
 
-      float volt = 55 * conv/256.0;
+*/
 
-      Serial.println(volt);
+      uint16_t conv = strtoul(convert,NULL,16);
+
+      //Serial.println(conv);
+      //Serial.println("--- ---");
+      float volt = 55 * (conv/256.0);
+      //Serial.println(volt);
 
       delay(10);
 
@@ -165,6 +176,7 @@ float AX2550::volt()
    }
    return 0.0;
 }
+
 
 int AX2550::amps(uint8_t channel)
 {
